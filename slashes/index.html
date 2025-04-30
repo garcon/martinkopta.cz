@@ -23,23 +23,38 @@
         </hgroup>
         <nav aria-label="Navigace" itemscope itemtype="https://schema.org/SiteNavigationElement">
             <menu>
-                <li itemprop="name"><a href="/" aria-current="page" itemprop="url">O mně</a></li>
+                <li itemprop="name"><a href="/" itemprop="url">O mně</a></li>
                 <li itemprop="name"><a href="/portfolio" itemprop="url">Portfolio</a></li>
                 <li itemprop="name"><a href="/contact" itemprop="url">Kontakt</a></li>
             </menu>
         </nav>
+        <nav aria-label="Drobečková navigace" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <ol>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="item url" ><span itemprop="name">Úvod</span></a><meta itemprop="position" content="1" /></li>
+                <li aria-current="page" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/contact" itemprop="item url"><span itemprop="name">Slash Pages</span></a><meta itemprop="position" content="2" /></li>
+            </ol>
+        </nav>
     </header>
     <main>
         <article>
-            <p>Ahoj, jsem UX specialista z Prahy. Zaměřuji se na design založený na důkazech a věnuji se uživatelskému výzkumu. Svou práci stavím na hodnotách designu zaměřeného na člověka a růstu podnikání.</p>
-            <p>Starám se o laboratoř použitelnosti v <a href="https://theforge.cz/">The Forge</a>. Učím design zaměřený na člověka a design sprint na <a href="https://kme.vse.cz/studium/magisterske-studium/magisterska-specializace-ux-vyzkum-a-design/">Vysoké škole ekonomické</a>. Podílím se na organizaci české UX komunity v <a href="https://asociaceux.cz/">Asociaci UX</a>.</p>
-            <p>Má práce vychází z mého zázemí ve společenských vědách, znalostí internetových technologií a zkušeností z podnikání. Jako designér těžím z praxe, která začala rokem 1997.</p>
-            <p>Jsem spoluautorem knihy pro klienty designérů <a href="https://rsow.cz/75tipu">75 tipů, jak si říct o web</a> a online projektu <a href="https://rsow.cz/">#řeknisioweb</a>.</p>
+            <h1>Slash Pages</h1>
+            
+            <p><a href="https://slashpages.net/">Slash Pages</a> jsou stránky, které mají zvykově ustálené adresy.</p>
+
+            <dl>
+                <dt>/<a href="/about">about</a></dt>
+                <dd>Základní informace o mně</dd>
+                <dt>/<a href="/contact">contact</a></dt>
+                <dd>Kontaktní údaje</dd>
+                <dt>/<a href="/slashes">slashes</a></dt>
+                <dd>Tato stránka s přehledem Slash Pages</dd>
+            </dl>
+
+            <p>Poslední aktualizace je z <time datetime="2025-04-30">30. dubna 2025</time>.</p>
         </article>
     </main>
     <footer>
-        <p>Martin Kopta, <a href="tel:+420604917881">+420 604 917 881</a>, <a href="mailto:hi@martinkopta.cz">hi@martinkopta.cz</a>, <a href="https://ares.gov.cz/ekonomicke-subjekty?ico=69352402">IČ 693 52 402</a>
-        <br><a href="/slashes">/SlashPages</a></p>
+        <p>Martin Kopta <a href="/slashes">/SlashPages</a></p>
     </footer>
 </body>
 </html>
