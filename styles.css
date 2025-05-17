@@ -11,6 +11,7 @@
     --font-size-small: calc(var(--font-size-base) / 6 * 5); /* 20px */
     --font-size-xsmall: calc(var(--font-size-base) / 6 * 4); /* 16px */
     --font-size-xxsmall: calc(var(--font-size-base) / 6 * 3); /* 12px */
+    --font-stretch-base: 100%;
     --font-line-height-base: 38px;
     --font-weight-base: 400;
     --size-1: 1rem;
@@ -35,6 +36,13 @@
     --length-10: 89px; 
 }
 
+@media (max-width: 600px) {
+    :root {
+        --font-stretch-base: 65%;
+    }
+
+}
+
 .outline {
     outline: 1px solid var(--color-text-primary);
 }
@@ -55,6 +63,7 @@ html {
         var(--font-weight-base) 
         var(--font-size-base)/var(--font-line-height-base) 
         var(--font-family-base);
+    font-stretch: var(--font-stretch-base);
  }
 
 body {
@@ -75,6 +84,18 @@ header {
     gap: 0;
     flex-direction: row;
     align-items: last baseline;
+
+    &:not(:has([itemtype$="BreadcrumbList"])) + main {
+        margin-top: 0;
+        &::before {
+            content: '⸺';
+            display: block;
+            color: var(--color-brand-primary);
+            margin: 0 0 var(--size-3);
+            font-size: var(--font-size-small);
+            font-weight: var(--font-weight-base);
+        }
+    }
 
     * {
         font-size: var(--font-size-small);
@@ -118,15 +139,6 @@ header {
     }
     nav[itemtype$="SiteNavigationElement"] {
         flex-shrink: 1;
-
-        :any-link {
-            color: var(--color-brand-primary);
-            text-decoration: none;
-
-            &[aria-current], &:hover, &:focus {
-                text-decoration: underline;
-            }
-        }
         
         li {
             margin-right: 2em;
@@ -134,8 +146,27 @@ header {
             &:last-of-type {
                 margin-right: 0;
             }
+
+            :any-link {
+                color: var(--color-brand-primary);
+                text-decoration: underline;
+            }
+
+            &:has([aria-current="page"]) {
+                ::before {
+                    position:absolute;
+                    left: -.85em;
+                    content: '▸';
+                    display: block;
+                    color: var(--color-brand-primary);
+                }
+                :any-link {
+                    position: relative;
+                }
+            }
         }
     }
+
     menu, 
     ol,
     ul {
@@ -154,13 +185,14 @@ header {
     nav[itemtype$="BreadcrumbList"] {
         flex: none;
         width: 100%;
+
         &::before {
             content: '⸺';
             display: block;
             color: var(--color-brand-primary);
             margin: 0;
         }
-
+        
         li :any-link span {
             font-size: var(--font-size-xsmall);
             text-transform: uppercase;
@@ -205,6 +237,9 @@ main {
 
     article {
         max-width: 750px;
+        hyphens: auto;
+        hyphenate-limit-chars: 5 2 2;
+        text-align: justify;
     }
 
     :any-link {
@@ -227,16 +262,25 @@ main {
 
         
         &:hover, 
-        &:focus, 
         &[href^="http"]:hover::after,
-        &[href^="http"]:focus::after,
         &:hover span::before, 
         &:hover span::after,
+        &:focus, 
+        &[href^="http"]:focus::after,
         &:focus span::before, 
         &:focus span::after {
             color: var(--color-brand-primary);
-            text-decoration: none;
-        }   
+            text-decoration: underline var(--color-link-primary);
+        }
+        
+        &:active, 
+        &[href^="http"]:active::after,
+        &:active span::before, 
+        &:active span::after {
+            color: var(--color-background-primary);
+            background: var(--color-brand-primary);
+            text-decoration: underline var(--color-link-primary);
+        }
 
         span::before, span::after {
             text-decoration: underline;
@@ -257,7 +301,17 @@ main {
     }
 
     p {
-        text­‑wrap: pretty
+        margin-bottom: 1lh;
+    }
+
+    section p {
+        text­‑wrap: pretty;
+        margin: 0;
+        text-indent: 3em;
+
+        &:first-of-type {
+            text-indent: 0;
+        }
     }
 
     span::before, span::after {
