@@ -38,7 +38,19 @@
 
 @media (max-width: 600px) {
     :root {
-        --font-stretch-base: 65%;
+        --font-stretch-base: 62.5%;
+        --font-size-base: 20px;
+        --font-line-height-base: 28px;
+    }
+    html body {
+        padding: var(--size-1) var(--size-1);
+    }
+    main article section p {
+        text-align: left;
+        text-indent: 0;
+        margin-bottom: 1lh;
+        hyphens: none;
+        text-wrap: pretty;
     }
 
 }
@@ -150,6 +162,7 @@ header {
             :any-link {
                 color: var(--color-brand-primary);
                 text-decoration: underline;
+                text-underline-offset: 0.175em;
             }
 
             &:has([aria-current="page"]) {
@@ -237,9 +250,6 @@ main {
 
     article {
         max-width: 750px;
-        hyphens: auto;
-        hyphenate-limit-chars: 5 2 2;
-        text-align: justify;
     }
 
     :any-link {
@@ -305,9 +315,12 @@ main {
     }
 
     section p {
-        text­‑wrap: pretty;
+        text-wrap: normal;
         margin: 0;
-        text-indent: 3em;
+        text-indent: 1em;
+        hyphens: auto;
+        hyphenate-limit-chars: 5 2 2;
+        text-align: justify;
 
         &:first-of-type {
             text-indent: 0;
@@ -353,6 +366,8 @@ footer {
     :any-link {
         color: var(--color-brand-primary);
         text-decoration: none;
+        text-wrap: nowrap;
+        white-space: collapse nowrap;
         
         &:hover, 
         &:focus {
