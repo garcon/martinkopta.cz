@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" itemscope itemtype="https://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <hgroup itemscope itemtype="https://schema.org/WebSite" >
+        <hgroup itemprop="isPartOf" itemscope itemtype="https://schema.org/WebSite" >
             <h1 itemprop="name"><a href="/" itemprop="url">Martin Kopta</a></h1>
             <p itemprop="keywords">
                 <dfn>Designer</dfn>
@@ -28,7 +28,7 @@
                 <li itemprop="name"><a href="/contact" itemprop="url">Kontakt</a></li>
             </menu>
         </nav>
-        <nav aria-label="Drobečková navigace" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <nav aria-label="Drobečková navigace" itemprop="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <ol>
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="item url" ><span itemprop="name">Úvod</span></a><meta itemprop="position" content="1"></li>
                 <li aria-current="page" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/contact" itemprop="item url"><span itemprop="name">Portfolio</span></a><meta itemprop="position" content="2"></li>
