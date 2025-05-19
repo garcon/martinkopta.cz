@@ -36,6 +36,12 @@
     --length-10: 89px; 
 }
 
+@media (max-width: 1000px) {
+    :root {
+        --font-stretch-base: 87.5%;
+    }
+}
+
 @media (max-width: 600px) {
     :root {
         --font-stretch-base: 62.5%;
@@ -45,6 +51,7 @@
     html body {
         padding: var(--size-1) var(--size-1);
     }
+    
     main article section p {
         text-align: left;
         text-indent: 0;
@@ -76,6 +83,7 @@ html {
         var(--font-size-base)/var(--font-line-height-base) 
         var(--font-family-base);
     font-stretch: var(--font-stretch-base);
+    font-variant: common-ligatures slashed-zero oldstyle-nums text;
  }
 
 body {
@@ -125,7 +133,20 @@ header {
                 text-decoration: none;
                 font-size: var(--size-1);
                 font-weight: var(--font-weight-base);
+
+                &:hover,
+                &:focus {
+                    color: var(--color-brand-primary);
+                    text-decoration: underline var(--color-link-primary);
+                    text-underline-offset: 0.175em;
                 }
+                &:active {
+                    color: var(--color-background-primary);
+                    background: var(--color-brand-primary);
+                    text-decoration: underline var(--color-link-primary);
+                    text-decoration-thickness: 4px;
+                }
+            }
         }
 
         p {
@@ -153,28 +174,30 @@ header {
         flex-shrink: 1;
         
         li {
-            margin-right: 2em;
+            margin-right: 1ex;
             
             &:last-of-type {
                 margin-right: 0;
             }
-
+            
             :any-link {
                 color: var(--color-brand-primary);
+
                 text-decoration: underline;
                 text-underline-offset: 0.175em;
-            }
-
-            &:has([aria-current="page"]) {
-                ::before {
-                    position:absolute;
-                    left: -.85em;
-                    content: '▸';
-                    display: block;
-                    color: var(--color-brand-primary);
+                
+                &:hover, 
+                &:focus {
+                    text-decoration-color: var(--color-link-primary);
                 }
-                :any-link {
-                    position: relative;
+                &:active {
+                    color: var(--color-background-primary);
+                    background: var(--color-brand-primary);
+                    text-decoration-thickness: 4px;
+                }
+
+                &[aria-current="page"] {
+                    font-weight: bold;
                 }
             }
         }
@@ -236,9 +259,15 @@ header {
             color: var(--color-link-primary);
             text-decoration: underline;
 
-            &[aria-current], &:hover, &:focus {
+            &:hover, &:focus {
                 color: var(--color-brand-primary);
-                text-decoration: none;
+                text-decoration: underline var(--color-link-primary);
+            }
+            &:active {
+                color: var(--color-background-primary);
+                background: var(--color-brand-primary);
+                text-decoration: underline var(--color-link-primary);
+                text-decoration-thickness: 4px;
             }
         }
     }
@@ -255,13 +284,15 @@ main {
     :any-link {
         color: var(--color-link-primary);
     
-        &[href^="http"]::after {
-            content: '↗';
-            font-family: var(--font-family-emoji);
+        /* &[href^="http"]::after {
+            content: '🡕';
+            font-size: var(--font-size-xsmall);
             color: var(--color-link-primary);
             text-decoration: none;
+            text-decoration-color: transparent;
             display: inline;
-        }
+            vertical-align: top;
+        } */
         &[href^="tel"] {
             color: var(--color-text-primary);
             text-decoration: none;
@@ -290,6 +321,7 @@ main {
             color: var(--color-background-primary);
             background: var(--color-brand-primary);
             text-decoration: underline var(--color-link-primary);
+            text-decoration-thickness: 4px;
         }
 
         span::before, span::after {
@@ -372,7 +404,14 @@ footer {
         &:hover, 
         &:focus {
             color: var(--color-brand-primary);
-            text-decoration: underline;
+            text-decoration: underline var(--color-link-primary);
+        }
+
+        &:active {
+            color: var(--color-background-primary);
+            background: var(--color-brand-primary);
+            text-decoration: underline var(--color-link-primary);
+            text-decoration-thickness: 4px;
         }
     }
 
